@@ -101,47 +101,7 @@
 			</div>
 		</div>
 		<!-- // Reviews -->
-		<div class="mt-3" v-if="ratings.length != null">
-			<h5 class="font-weight-600">Reviews</h5>
-			<hr class="mt-3 mb-0">
-			<div v-for="(rating, index) in ratings" :key="index">
-				<div v-if="rating.comments != null" class="reviews">
-					<div class="row">
-						<!-- // User -->
-						<div class="col-lg-4">
-							<div class="d-inline-flex">
-								<div>
-									<img v-if="rating.user.avatar == 'users/default.png'" :src="rating.user.photo_url" class="rounded-circle mr-1" height="46" width="46" alt="">
-									<client-only v-else>
-										<cld-image :publicId="`${rating.user.avatar_public_id}.png`" class="mr-1 profile-photo" alt="">
-											<cld-transformation height="46" width="46" crop="fill" radius="100" />
-										</cld-image>
-									</client-only>
-								</div>
-								<div>
-									<div class="ml-3">
-										<span class="small text-muted">{{ rating.created_at | moment("from", "now") }}</span>
-										<div>
-											<p class="mb-0 font-weight-500">{{ rating.user.name }}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- // Comment -->
-						<div class="col-lg-8">
-							<div>
-								<star-rating :star-size="15" inactive-color="#fff" :read-only="true" :show-rating="false" :rating="rating.rating" :increment="0.5" :border-width="3" :rounded-corners="true" :star-points="[23,2, 14,17, 0,19, 10,34, 7,50, 23,43, 38,50, 36,34, 46,19, 31,17]"></star-rating>
-							</div>
-							<div class="mt-3">
-								{{ rating.comments }}
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-		</div>
+		
 	</div>
 </template>
 
@@ -160,7 +120,7 @@
 
 		computed: {
 			totalFivePercentage: function () {
-				return parseInt((this.five / this.ratings_count) * 100)  
+				return parseInt((this.five / this.ratings_count) * 100)
 			},
 
 			totalFourPercentage: function () {
@@ -179,7 +139,7 @@
 				return parseInt((this.one / this.ratings_count) * 100)
 			}
 		}
-	
+
 	}
 
 </script>
